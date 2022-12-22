@@ -13,4 +13,3 @@ test_that(
     expect_true(inherits(significance(), "summary.glm"))
   }
 )
-
