@@ -31,4 +31,3 @@ test_that(
     expect_error(pie(data, eq = `<`, rhs = -1))
   }
 )
-
