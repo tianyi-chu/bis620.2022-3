@@ -20,7 +20,8 @@ histogram <- function(x = data, col = "radius_mean") {
     select(col) |>
     unlist()
 
-  hist(column, labels = TRUE, main = paste("Histogram of", col))}else {
+  hist(column, labels = TRUE, main = paste("Histogram of", col))
+  } else {
     stop("Please enter a column from the data!")
   }
 }
