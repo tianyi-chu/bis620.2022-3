@@ -10,5 +10,6 @@ test_that(
   "The histogram() errors when the input column is not from the dataset",
   {
     data(data)
-    expect_error(histogram(data, "wrong"))}
+    expect_error(histogram(data, "wrong"))
+  }
 )
