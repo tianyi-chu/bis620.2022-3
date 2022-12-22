@@ -15,10 +15,10 @@
 #' data(data)
 #' significance(data, "mean")
 #' @export
-significance <- function(x = data, subset = "mean"){
+significance <- function(x = data, subset = "mean") {
   options(warn = -1)
   # separate data
-  data <- x |> mutate (diagnosis = if_else (diagnosis == "B", 1, 0)) |>
+  data <- x |> mutate(diagnosis = if_else(diagnosis == "B", 1, 0)) |>
     mutate(diagnosis = factor(diagnosis))|>
     select(!id)
   # if diagnosis = 'B' then it gets a value of 1; gets 0 otherwise
@@ -27,13 +27,12 @@ significance <- function(x = data, subset = "mean"){
   num_test <- nrow(data) - num_train
   split <- sample(c(rep(1, num_train), rep(0, num_test)))
 
-  subset_cols <- colnames(data)[grepl(subset,colnames(data))]
+  subset_cols <- colnames(data)[grepl(subset, colnames(data))]
   if (length(subset_cols) == 0) {
     stop("Please enter a column from data!")
   }
   subset_data <- cbind(data[1], data[subset_cols])
   subset_train <- subset(subset_data, split == 1)
-  subset_test <- subset(subset_data, split == 0)
 
   lm_subset <- glm(diagnosis ~ .,
                    data = subset_train,
