@@ -9,7 +9,7 @@
 #' @param rhs the right-hand-side of the condition; used to subset the data
 #' @return a pie plot showing the number of benign/malignant diagnosis
 #' in the subsetted data
-#' @importFrom dplyr group_by summarise arrange mutate n
+#' @importFrom dplyr group_by summarise arrange mutate n desc
 #' @importFrom ggplot2 aes ggplot geom_text facet_grid geom_bar
 #' coord_polar theme_void ggtitle
 #' @examples
@@ -31,7 +31,7 @@ pie <- function(x = data, colname = "diagnosis", eq = `!=`, rhs = 2) {
     pie_pos <- pie_data |>
       arrange(desc(n)) |>
       mutate(prop = n / sum(pie_data$n) * 100) |>
-      mutate(ypos = cumsum(prop)- 0.5 * prop)
+      mutate(ypos = cumsum(prop) - 0.5 * prop)
   } else {
     stop("Please input a column name!")
   }
