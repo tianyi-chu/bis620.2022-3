@@ -1,5 +1,6 @@
 test_that(
-  "The accuracy() errors when input column suffix is not contained in any column of the dataset.",
+  "The accuracy() errors when input column suffix is not contained 
+in any column of the dataset.",
   {
     data(data)
     expect_error(accuracy(data, "wrong column"))
